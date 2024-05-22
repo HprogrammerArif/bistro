@@ -7,7 +7,7 @@ const Fetured = () => {
     <div className="featured-item pt-8 my-20 text-white bg-fixed">
       <SectionTitle
         subHeading="---Check it out---"
-        heading="FROM OUR MENU"
+        heading="Feature Item"
       ></SectionTitle>
 
       <div className="md:flex justify-center bg-black bg-opacity-20 items-center pb-20 pt-12 px-36">
@@ -24,7 +24,7 @@ const Fetured = () => {
             Eaque repellat recusandae ad laudantium tempore consequatur
             consequuntur omnis ullam maxime tenetur.
           </p>
-          <button className="btn btn-outline border-0 border-b-4 mt-4">Default</button>
+          <button className="btn btn-outline border-0 border-b-4 mt-4">Order Now</button>
         </div>
       </div>
     </div>
