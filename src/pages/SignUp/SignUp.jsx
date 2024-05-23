@@ -1,11 +1,26 @@
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  console.log(watch("example")) 
+
+
   return (
     <div className="w-full container mx-auto flex justify-center items-center mt-6">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
         <h1 className="text-2xl font-bold text-center">SignUp</h1>
-        <form noValidate="" action="" className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-1 text-sm">
             <label
               htmlFor="username"
@@ -15,15 +30,22 @@ const SignUp = () => {
             </label>
             <input
               type="text"
+              
+              // {...register("username", { required: true })}
+              {...register("username", { required: true, minLength:6 })}
+
               name="username"
               id="username"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md border border-gray-200 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"
+              className="w-full px-4 py-3 rounded-md border border-gray-200 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"             
             />
+            {errors.username && <span className="text-red-600">This field is required</span>}
+
           </div>
+
           <div className="space-y-1 text-sm">
             <label
-              htmlFor="password"
+              htmlFor="email"
               className="block text-gray-400 dark:text-gray-600"
             >
               Email
@@ -31,11 +53,15 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
+              // {...register("email")}
+              {...register("email", { required: true })}
               id="email"
               placeholder="Email"
               className="w-full px-4 py-3 rounded-md border border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"
             />
+            {errors.email && <span className="text-red-600">This field is required</span>}
           </div>
+
           <div className="space-y-1 text-sm">
             <label
               htmlFor="password"
@@ -46,20 +72,30 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
+              // {...register("password")}
+              {...register("password", { required: true, minLength:6, maxLength:20 })}              
               id="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md border border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"
             />
+
+            {errors.password && <span className="text-red-600">This field is required</span>}
+
+
             <div className="flex justify-end text-xs text-gray-400 dark:text-gray-600">
               <a rel="noopener noreferrer" href="#">
                 Forgot Password?
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600">
-            Sign Up
-          </button>
+
+          <input
+            className="block border-none btn w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600"
+            type="submit"
+            value="Sign Up"
+          />
         </form>
+
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
           <p className="px-3 text-sm text-gray-400 dark:text-gray-600">
