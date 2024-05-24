@@ -11,13 +11,14 @@ import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   // const captchaRef = useRef(null);
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const { signIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -124,7 +125,8 @@ const Login = () => {
             </div>
 
             <input
-              disabled={disabled}
+            // TODO: Apply disabled for recaptcha
+              disabled={false}
               className={`block w-full p-3 text-center rounded-sm ${
                 disabled
                   ? "cursor-not-allowed bg-gray-500 text-gray-300"
