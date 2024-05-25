@@ -5,8 +5,11 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../pages/Dashboard/Cart/Cart";
 
 export const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Main></Main>,
@@ -21,15 +24,26 @@ export const router = createBrowserRouter([
       },
       {
         path: "/order/:category",
-      element: <Order></Order>,
+        element: <Order></Order>,
       },
       {
         path: "/login",
-      element: <Login></Login>,
+        element: <Login></Login>,
       },
       {
         path: "/signup",
-      element: <SignUp></SignUp>,
+        element: <SignUp></SignUp>,
+      },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "cart",
+        element: <Cart></Cart>,
       },
     ],
   },
