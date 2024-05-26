@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
-  const [cart, refatch] = useCart();
+  const [cart, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
   // console.log(cart);
 
@@ -28,7 +28,7 @@ const Cart = () => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
-            refatch();
+            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
