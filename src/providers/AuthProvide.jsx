@@ -60,20 +60,23 @@ const AuthProvide = ({ children }) => {
         .then(res => {
           if (res.data.token) {
             localStorage.setItem('access-token', res.data.token)
+            //fix a important bug using loading
+            setLoading(false);
           }
         })
 
       } else {
         //TODO: remove token (if token in the client side local storage, caching, in memory)
         localStorage.removeItem('access-token')
+        setLoading(false);
       }
 
-      setLoading(false);
+      //setLoading(false);
     });
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   const authInfo = {
     user,
